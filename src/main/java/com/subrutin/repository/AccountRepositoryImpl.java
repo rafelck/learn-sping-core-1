@@ -5,9 +5,10 @@ import java.util.*;
 
 import com.subrutin.domain.Account;
 
-public class AccountRepositoryImpl implements AccountRepository{
+public class AccountRepositoryImpl implements AccountRepository {
 
-	private Map<Long, Account> accountMap = new HashMap<Long,Account>();{
+	private Map<Long, Account> accountMap = new HashMap<Long, Account>();
+	{
 		Account account1 = new Account();
 		account1.setId(1L);
 		account1.setAccountNumber("145314010");
@@ -19,18 +20,20 @@ public class AccountRepositoryImpl implements AccountRepository{
 		account2.setAccountNumber("145314011");
 		account2.setName("Angelica");
 		account2.setBalance(new BigDecimal(500000));
+		
+		accountMap.put(account1.getId(), account1);
+		accountMap.put(account2.getId(), account2);
 	}
-	
+
 	@Override
 	public void update(Account account) {
 		accountMap.put(account.getId(), account);
-		
+
 	}
 
 	@Override
 	public Account find(Long id) {
-		accountMap.get(id);
-		return null;
+		return accountMap.get(id);
 	}
 
 }
